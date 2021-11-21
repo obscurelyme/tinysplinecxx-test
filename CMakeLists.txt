@@ -9,6 +9,8 @@ else()
 endif()
 
 find_package(tinysplinecxx CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
 
 add_executable(tinytest main.cpp)
 target_link_libraries(tinytest PRIVATE tinysplinecxx::tinysplinecxx)
+target_link_libraries(tinytest PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static)
