@@ -13,6 +13,6 @@ find_package(SDL2 CONFIG REQUIRED)
 find_package(X11 REQUIRED)
 
 add_executable(tinytest main.cpp)
-target_link_libraries(tinytest ${X11_LIBRARIES})
+target_link_libraries(tinytest PRIVATE ${X11_LIBRARIES})
 target_link_libraries(tinytest PRIVATE tinysplinecxx::tinysplinecxx)
 target_link_libraries(tinytest PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static)
