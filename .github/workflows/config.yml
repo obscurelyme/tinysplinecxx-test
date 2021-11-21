@@ -1,0 +1,19 @@
+name: sdl-linux-test-ci
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  build:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure
+        run: |
+          sudo apt install make
+          sudo apt install yasm
+          bash .github/scripts/linux/configure.sh
+      - name: Build
+        run: bash .github/scripts/linux/build.sh
