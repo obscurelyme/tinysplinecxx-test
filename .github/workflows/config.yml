@@ -10,11 +10,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Configure
+      - name: New vcpkg
         run: |
-          sudo apt-get update
-          sudo apt-get install make
-          sudo apt-get install yasm
-          bash .github/scripts/linux/configure.sh
-      - name: Build
-        run: bash .github/scripts/linux/build.sh
+          git clone https://github.com/Microsoft/vcpkg.git
+          ./vcpkg/bootstrap-vcpkg.sh
+          cd ./vcpkg
+          git checkout 843e0ba0d8f9c9c572e45564263eedfc7745e74f
+          cd ../
+      # - name: Configure
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install make
+      #     sudo apt-get install yasm
+      #     bash .github/scripts/linux/configure.sh
+      # - name: Build
+      #   run: bash .github/scripts/linux/build.sh
