@@ -13,9 +13,9 @@ jobs:
       - name: Configure
         run: |
           sudo apt-get update
-          sudo apt-get upgrade
           sudo apt-get install make
           sudo apt-get install yasm
+          sudo apt-get install libsdl2-dev
           bash .github/scripts/linux/configure.sh
       - name: Build
         run: bash .github/scripts/linux/build.sh
