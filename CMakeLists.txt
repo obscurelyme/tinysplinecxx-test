@@ -2,7 +2,12 @@ cmake_minimum_required(VERSION 3.0.0)
 
 project(tinytest VERSION 0.1.0)
 
-set(tinysplinecxx_DIR "${CMAKE_BINARY_DIR}/vcpkg_installed/x64-osx/share/tinyspline")
+if (APPLE)
+  set(tinysplinecxx_DIR "${CMAKE_BINARY_DIR}/vcpkg_installed/x64-osx/share/tinyspline")
+else()
+  set(tinysplinecxx_DIR "${CMAKE_BINARY_DIR}/vcpkg_installed/x64-linux/share/tinyspline")
+endif()
+
 find_package(tinysplinecxx CONFIG REQUIRED)
 
 add_executable(tinytest main.cpp)
